@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti 💗</title>
+
+<div class="blur-circle c1"></div>
+<div class="blur-circle c2"></div>
+
+<style>
+
+	.snowflake {
+	  position: fixed;
+	  top: -10px;
+	  color: white;
+	  opacity: 0.7;
+	  font-size: 14px;
+	  pointer-events: none;
+	  animation: fall linear forwards;
+	}
+
+	@keyframes fall {
+	  to {
+		transform: translateY(110vh);
+	  }
+	}
+
+	.blur-circle {
+		position: absolute;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	filter: blur(60px);
+	opacity: 0.6;
+	animation: float 12s ease-in-out infinite;
+	}
+
+	.c1 {
+		background: #ffb3c6;
+		top: 10%;
+	left: 5%;
+	}
+
+	.c2 {
+	  background: #cdb4db;
+	  bottom: 10%;
+	  right: 5%;
+	  animation-delay: 4s;
+	}
+
+	@keyframes float {
+	  0%, 100% { transform: translateY(0); }
+	  50% { transform: translateY(-30px); }
+	}
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f7cfd8, #f6dde3, #e8dff5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #333;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 420px;
+    padding: 28px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    text-align: center;
+    animation: fadeUp 1.6s ease;
+  }
+
+  h1 {
+    margin: 0 0 12px;
+    font-weight: 500;
+  }
+
+  p {
+    line-height: 1.6;
+    font-size: 15px;
+    opacity: 0.9;
+  }
+
+  button {
+    margin-top: 22px;
+    padding: 12px 26px;
+    border: none;
+    border-radius: 25px;
+    background: rgba(255, 105, 135, 0.75);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  button:hover {
+    background: rgba(255, 105, 135, 0.9);
+    transform: translateY(-1px);
+  }
+
+  #mensaje {
+    white-space: pre-line;
+    margin-top: 18px;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>¡¡Feliz cumpleaños!! 🎂</h1>
+  <p id="mensaje"></p>
+  <button onclick="escribir()">💌 Leer mensaje</button>
+</div>
+
+<script>
+  const texto = 
+`¡Hola!..
+Si estás leyendo esto es porque funcionó y espero no se buggé xd.
+En fin...
+
+Quería regalarte algo sencillo,
+pero hecho con mucho cariño.
+
+¿Te gustó?, recordé que tu color favorito es el rosa,
+asi que, traté de hacer algo elegante y bonito con lo que aprendí de programación.
+
+Gracias por lo que has hecho en este año y gracias por estar ahí.
+
+Perdona mis fallos y todo lo que he causado en este año.
+
+Espero que este año que viene sea mejor para tí, y que logres tus metas. 
+
+Lo has hecho bien en este año, ¡sigue asi!,
+estoy tan orgulloso de ti, ¿lo sabes?
+
+Espero que la vida te de otro año de buena salud, 
+y de buenos deseos que podrás alcanzar. 
+
+Habrá veces en que sintamos que nada sale bien, y de querer regresar al pasado...
+tal vez yo no pueda cambiar el pasado... pero puedo y podemos cambiar el futuro. ✨
+
+Disfruta de este día especial con tu familia, eres la mejor.
+Y aquí estaré cuando me necesites, ya que también tengo mis propios objetivos de seguir mejorando en mí mismo.
+
+Te mando un gran abrazo, y...
+
+¡FELIZ CUMPLEAÑOS, Itzel!🎂🎈
+
+Espero que esto...
+te haga sonreír...
+... tanto como tú lo haces conmigo. ✨
+
+Atentamente... Isa 💫`;
+
+  let i = 0;
+  function escribir() {
+    if (i < texto.length) {
+      document.getElementById("mensaje").textContent += texto.charAt(i);
+      i++;
+      setTimeout(escribir, 45);
+    }
+  }
+  
+  function crearCopo() {
+    const copo = document.createElement("div");
+    copo.className = "snowflake";
+    copo.textContent = "❄";
+
+    copo.style.left = Math.random() * 100 + "vw";
+    copo.style.animationDuration = 6 + Math.random() * 6 + "s";
+    copo.style.fontSize = 10 + Math.random() * 14 + "px";
+    copo.style.opacity = Math.random();
+
+    document.body.appendChild(copo);
+
+    setTimeout(() => {
+      copo.remove();
+    }, 12000);
+  }
+
+  setInterval(crearCopo, 400);
+</script>
+
+</body>
+</html>
