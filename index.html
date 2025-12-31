@@ -130,6 +130,10 @@
 
 <body>
 
+<audio id="bgm" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <div class="card">
   <h1>¡¡Feliz cumpleaños!! 🎂</h1>
   <p id="mensaje"></p>
@@ -175,9 +179,12 @@ te haga sonreír...
 ... tanto como tú lo haces conmigo. ✨
 
 Atentamente... Isa 💫`;
-
+	
+	const audio = document.getElementById("bgm");
+	audio.volume = 0.2;
   let i = 0;
   function escribir() {
+	audio.play().catch(() => {});
     if (i < texto.length) {
       document.getElementById("mensaje").textContent += texto.charAt(i);
       i++;
